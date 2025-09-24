@@ -1,0 +1,1632 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="description" content="Piel y Salud Integral - Consultorio médico especializado en dermatología y medicina general. Dra. Cristina Mía Díaz Jave y Dr. Josehp Christopher Castillo Cuenca.">
+    <meta name="keywords" content="dermatología, medicina general, anatomopatología, consulta médica, piel, salud">
+    <meta name="theme-color" content="#2b7dbc">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <title>Piel y Salud Integral - Consultorio Médico</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --color-primary: #2b7dbc;
+            --color-secondary: #4ca1af;
+            --color-accent: #e74c3c;
+            --color-light: #f8f9fa;
+            --color-dark: #2c3e50;
+            --color-text: #4a4a4a;
+            --color-pastel: #ecf4f9;
+            /* Pastel colors only for navigation */
+            --color-nav-pastel-pink: #fdeef2;
+            --color-nav-pastel-blue: #e8f4f8;
+            --color-nav-pastel-green: #e8f5f0;
+            --color-nav-pastel-yellow: #fff8e1;
+            --color-header-bg: linear-gradient(135deg, #fef9f7 0%, #f0f7ff 100%);
+            --color-logo-shadow: rgba(43, 125, 188, 0.1);
+            --transition: all 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
+            --bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            color: var(--color-text);
+            line-height: 1.6;
+            background-color: white;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(168, 216, 232, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(244, 180, 193, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(184, 232, 216, 0.1) 0%, transparent 50%);
+            animation: floatingBg 20s ease-in-out infinite;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        @keyframes floatingBg {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-20px) rotate(2deg); }
+            66% { transform: translateY(20px) rotate(-2deg); }
+        }
+        
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .floating-circle, .floating-triangle, .floating-square {
+            position: absolute;
+            opacity: 0.6;
+            animation: floatUpDown 6s ease-in-out infinite;
+        }
+        
+        .floating-circle {
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(45deg, var(--color-primary), var(--color-accent));
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(168, 216, 232, 0.3);
+        }
+        
+        .floating-triangle {
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom: 20px solid var(--color-secondary);
+            filter: drop-shadow(0 0 10px rgba(184, 232, 216, 0.4));
+        }
+        
+        .floating-square {
+            width: 15px;
+            height: 15px;
+            background: linear-gradient(45deg, var(--color-accent), var(--color-secondary));
+            transform: rotate(45deg);
+            box-shadow: 0 0 15px rgba(244, 180, 193, 0.3);
+        }
+        
+        @keyframes floatUpDown {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(180deg); }
+        }
+
+        header {
+            background: var(--color-header-bg);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 8px 32px rgba(168, 216, 232, 0.2);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: var(--transition);
+            border-bottom: 1px solid rgba(168, 216, 232, 0.2);
+            animation: headerSlideDown 0.8s var(--bounce);
+        }
+        
+        @keyframes headerSlideDown {
+            0% { transform: translateY(-100%); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            margin-right: 2rem;
+            gap: 0.8rem;
+        }
+        
+        .logo-image {
+            height: 50px;
+            width: auto;
+            transition: var(--transition);
+            filter: drop-shadow(0 4px 8px var(--color-logo-shadow));
+            border-radius: 8px;
+            animation: logoPulse 3s ease-in-out infinite;
+        }
+        
+        @keyframes logoPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+        
+        .logo:hover .logo-image {
+            transform: scale(1.1) rotate(5deg);
+            filter: drop-shadow(0 6px 16px var(--color-logo-shadow));
+            animation: logoSpin 0.6s var(--bounce);
+        }
+        
+        @keyframes logoSpin {
+            0% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.05) rotate(2deg); }
+            100% { transform: scale(1.1) rotate(5deg); }
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+
+        .logo h1 {
+            font-size: 1.3rem;
+            color: var(--color-primary);
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .logo span {
+            color: var(--color-secondary);
+            font-weight: 400;
+            font-size: 0.9rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-menu li {
+            margin: 0 0.8rem;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--color-dark);
+            font-weight: 500;
+            padding: 0.8rem 1.2rem;
+            position: relative;
+            transition: var(--transition);
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            border-radius: 25px;
+            background: linear-gradient(135deg, var(--color-nav-pastel-blue), var(--color-nav-pastel-pink));
+            margin: 0.2rem;
+            overflow: hidden;
+        }
+        
+        .nav-menu a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.6s;
+        }
+
+        .nav-menu a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: 0;
+            left: 50%;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+            transition: var(--transition);
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .nav-menu a:hover {
+            color: var(--color-primary);
+            background: linear-gradient(135deg, var(--color-nav-pastel-green), var(--color-nav-pastel-yellow));
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .nav-menu a:hover::before {
+            left: 100%;
+        }
+
+        .nav-menu a:hover:after {
+            width: 80%;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-left: auto;
+            min-height: 44px;
+            min-width: 120px;
+            position: relative;
+            overflow: hidden;
+            animation: buttonGlow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes buttonGlow {
+            0% { box-shadow: 0 4px 15px rgba(43, 125, 188, 0.4); }
+            100% { box-shadow: 0 6px 25px rgba(76, 161, 175, 0.6); }
+        }
+        
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--color-accent), var(--color-primary), var(--color-secondary), var(--color-accent));
+            border-radius: 50px;
+            z-index: -1;
+            animation: borderRotate 3s linear infinite;
+        }
+        
+        @keyframes borderRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .cta-button:hover {
+            background: linear-gradient(135deg, var(--color-secondary), var(--color-accent));
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 8px 30px rgba(231, 76, 60, 0.4);
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--color-primary);
+            margin-left: 1rem;
+            min-height: 44px;
+            min-width: 44px;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5rem;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+        
+        .hamburger:hover {
+            background-color: var(--color-pastel);
+            color: var(--color-secondary);
+        }
+
+        .page-section {
+            display: none;
+            padding-top: 5rem;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        #home {
+            min-height: auto;
+            padding-top: 5rem;
+        }
+
+        .banner-container {
+            position: relative;
+            text-align: center;
+            color: white;
+            margin: 0 2rem 2rem;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .banner-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        .banner-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+        }
+
+        .banner-text h2 {
+            font-size: 2.8rem;
+            color: white;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+            animation: titleFadeIn 1s ease-out 0.3s both;
+        }
+
+        .banner-text p {
+            font-size: 1.3rem;
+            color: white;
+            max-width: 700px;
+            margin: 0 auto;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+        }
+
+        .banner-image {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+        }
+        
+        .home-content {
+            text-align: center;
+            padding: 2rem;
+            animation: sectionSlideIn 0.8s ease-out;
+        }
+        
+        .home-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 2rem auto 0;
+        }
+        
+        .feature-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+            animation: cardSlideUp 0.6s ease-out;
+        }
+        
+        .feature-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+        
+        .feature-item i {
+            font-size: 3rem;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+            animation: iconFloat 3s ease-in-out infinite;
+        }
+        
+        .feature-item h3 {
+            font-size: 1.4rem;
+            color: var(--color-dark);
+            margin-bottom: 1rem;
+        }
+        
+        .feature-item p {
+            color: var(--color-text);
+            line-height: 1.5;
+        }
+
+        .about, .services, .blog, .contact {
+            background-color: white;
+            padding: 3rem 2rem;
+            max-width: 1200px;
+            margin: 2rem auto;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            position: relative;
+            animation: sectionSlideIn 0.8s ease-out;
+        }
+        
+        @keyframes sectionSlideIn {
+            0% { transform: translateY(50px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        .about h2, .services h2, .blog h2, .contact h2 {
+            text-align: center;
+            font-size: 2.2rem;
+            color: var(--color-primary);
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .about h2:after, .services h2:after, .blog h2:after, .contact h2:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background: var(--color-secondary);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .professional-card {
+            margin-bottom: 2rem;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(184, 232, 216, 0.2);
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            animation: cardSlideUp 0.6s ease-out;
+        }
+        
+        .professional-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(184, 232, 216, 0.3);
+        }
+
+        .professional-header {
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary), var(--color-accent));
+            background-size: 200% 200%;
+            animation: gradientShift 4s ease-in-out infinite;
+            color: white;
+            padding: 1.5rem 2rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            min-height: 60px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .professional-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.8s;
+        }
+        
+        .professional-header:hover::before {
+            left: 100%;
+        }
+        
+        .professional-header:hover {
+            background-size: 250% 250%;
+            transform: scale(1.02);
+        }
+
+        .professional-header h3 {
+            font-size: 1.6rem;
+            margin: 0;
+        }
+
+        .professional-header p {
+            margin: 0.5rem 0 0;
+            font-size: 1.1rem;
+        }
+
+        .professional-header i {
+            transition: var(--transition);
+        }
+
+        .professional-content {
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, padding 0.5s ease;
+        }
+
+        .professional-content.active {
+            padding: 1.5rem;
+            max-height: 2000px;
+        }
+
+        .professional-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .professional-section h4 {
+            color: var(--color-primary);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--color-secondary);
+        }
+
+        .professional-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .professional-list li {
+            padding: 0.5rem 0;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .professional-list li:before {
+            content: '•';
+            color: var(--color-accent);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1.5em;
+            font-size: 1.2rem;
+        }
+
+        .personal-data {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .data-item {
+            display: flex;
+            align-items: center;
+        }
+
+        .data-item i {
+            color: var(--color-primary);
+            margin-right: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-icon {
+            background: linear-gradient(to right, var(--color-primary), var(--color-secondary));
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+            font-size: 2.5rem;
+        }
+
+        .service-content {
+            padding: 1.5rem;
+        }
+
+        .service-content h3 {
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .blog-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-image {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+            background: var(--color-light);
+        }
+
+        .blog-content {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .blog-content h3 {
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .blog-content p {
+            margin-bottom: 1rem;
+            color: var(--color-text);
+            flex-grow: 1;
+        }
+
+        .read-more {
+            color: var(--color-accent);
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            align-self: flex-start;
+        }
+        
+        .read-more::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(244, 180, 193, 0.3), transparent);
+            transition: left 0.5s;
+        }
+        
+        .read-more:hover {
+            background: rgba(244, 180, 193, 0.1);
+            transform: translateX(5px);
+        }
+        
+        .read-more:hover::before {
+            left: 100%;
+        }
+
+        .contact-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(244, 180, 193, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            animation: cardSlideUp 0.6s ease-out;
+        }
+
+        .contact-header {
+            background: linear-gradient(135deg, var(--color-accent), var(--color-primary), var(--color-secondary));
+            background-size: 200% 200%;
+            animation: gradientShift 5s ease-in-out infinite;
+            color: white;
+            padding: 1.5rem 2rem;
+        }
+
+        .contact-header h3 {
+            font-size: 1.6rem;
+            margin: 0;
+        }
+
+        .contact-content {
+            padding: 1.5rem;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            border-radius: 15px;
+            transition: var(--transition);
+            animation: itemSlideIn 0.5s ease-out;
+        }
+        
+        @keyframes itemSlideIn {
+            0% { transform: translateX(-20px); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+        
+        .contact-item:hover {
+            background: rgba(168, 216, 232, 0.1);
+            transform: translateX(10px);
+        }
+
+        .contact-item i {
+            color: var(--color-primary);
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            min-width: 30px;
+            animation: iconBounce 2s ease-in-out infinite;
+        }
+        
+        @keyframes iconBounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-5px); }
+            60% { transform: translateY(-3px); }
+        }
+
+        .contact-item-content h4 {
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .schedule-list {
+            list-style-type: none;
+            margin-top: 0.5rem;
+            padding-left: 0;
+        }
+
+        .schedule-list li {
+            padding: 0.3rem 0;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .schedule-list li:before {
+            content: '•';
+            color: var(--color-accent);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1.5em;
+        }
+
+        .notes-section {
+            background: linear-gradient(135deg, var(--color-pastel-blue), rgba(255, 255, 255, 0.8));
+            padding: 1.5rem;
+            border-radius: 15px;
+            border-left: 4px solid var(--color-primary);
+            position: relative;
+            overflow: hidden;
+            animation: noteSlideIn 0.8s ease-out;
+        }
+        
+        @keyframes noteSlideIn {
+            0% { transform: translateY(20px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+        
+        .notes-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(168, 216, 232, 0.1) 0%, transparent 70%);
+            animation: noteGlow 3s ease-in-out infinite;
+        }
+        
+        @keyframes noteGlow {
+            0%, 100% { transform: scale(0) rotate(0deg); opacity: 0; }
+            50% { transform: scale(1) rotate(180deg); opacity: 1; }
+        }
+
+        .notes-section h4 {
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .map-container {
+            position: relative;
+            overflow: hidden;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            margin-top: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .cta-button-mobile {
+            display: none;
+        }
+
+        /* Responsive Styles */
+        @media screen and (max-width: 1024px) {
+            .header-container {
+                padding: 1rem 1.5rem;
+            }
+            .banner-text h2 {
+                font-size: 2.2rem;
+            }
+            .banner-text p {
+                font-size: 1.1rem;
+            }
+            .services-grid, .blog-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+            .home-features {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 1.5rem;
+            }
+        }
+
+        @media screen and (max-width: 860px) {
+            .hamburger {
+                display: flex;
+            }
+            .logo {
+                gap: 0.6rem;
+            }
+            .logo-image {
+                height: 45px;
+            }
+            .logo h1 {
+                font-size: 1.2rem;
+            }
+            .logo span {
+                font-size: 0.85rem;
+            }
+            .nav-menu {
+                position: fixed;
+                top: 70px; /* Height of header */
+                right: -100%;
+                flex-direction: column;
+                background: var(--color-header-bg);
+                width: 280px;
+                height: 100vh;
+                padding: 2rem;
+                box-shadow: -5px 0 20px rgba(43, 125, 188, 0.15);
+                transition: var(--transition);
+                z-index: 999;
+                border-left: 1px solid rgba(43, 125, 188, 0.1);
+                backdrop-filter: blur(20px);
+                align-items: flex-start;
+            }
+            .nav-menu.active {
+                right: 0;
+            }
+            .nav-menu li {
+                margin: 0.8rem 0;
+                width: 100%;
+            }
+            .nav-menu a {
+                font-size: 1.1rem;
+                padding: 1rem 1.2rem;
+                width: 100%;
+                justify-content: flex-start;
+            }
+            .cta-button {
+                display: none;
+            }
+            .cta-button-mobile {
+                display: inline-block;
+                background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+                color: white;
+                border: none;
+                padding: 1rem 2rem;
+                border-radius: 50px;
+                font-weight: 600;
+                cursor: pointer;
+                transition: var(--transition);
+                margin-top: 1.5rem;
+            }
+            .cta-button-mobile:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            }
+            .nav-menu .cta-mobile-nav a {
+                background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+                color: white !important;
+                font-weight: 600;
+                text-align: center;
+                justify-content: center;
+            }
+            .nav-menu .cta-mobile-nav a:hover {
+                background: linear-gradient(135deg, var(--color-secondary), var(--color-accent));
+                transform: translateY(-2px) scale(1.03);
+                box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            }
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+            .services-grid, .blog-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .home-features {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .header-container {
+                padding: 1rem;
+            }
+            .banner-container {
+                margin: 0 1rem 2rem;
+            }
+            .banner-image {
+                height: 400px;
+            }
+            .banner-text h2 {
+                font-size: 1.8rem;
+            }
+            .banner-text p {
+                font-size: 1rem;
+                max-width: 90%;
+            }
+            .about, .services, .blog, .contact {
+                padding: 2.5rem 1.5rem;
+                margin: 1.5rem auto;
+            }
+            .professional-header {
+                padding: 1.2rem 1.5rem;
+            }
+            .professional-content.active {
+                padding: 1.2rem;
+            }
+            .home-content {
+                padding: 1.5rem;
+            }
+            .feature-item {
+                padding: 1.5rem;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .header-container {
+                padding: 0.8rem 1rem;
+                flex-wrap: nowrap;
+            }
+            .logo {
+                gap: 0.5rem;
+                margin-right: 1rem;
+            }
+            .logo-image {
+                height: 40px;
+            }
+
+            .logo h1 {
+                font-size: 1.1rem;
+                line-height: 1.2;
+            }
+            
+            .logo span {
+                font-size: 0.8rem;
+            }
+            
+            .nav-menu {
+                width: 100vw;
+                right: -100vw;
+                padding: 1.5rem;
+            }
+
+            .banner-image {
+                height: 350px;
+            }
+
+            .banner-text h2 {
+                font-size: 1.5rem;
+            }
+
+            .banner-text p {
+                display: none; /* Hide subtitle on very small screens to avoid clutter */
+            }
+
+            .about, .services, .blog, .contact {
+                padding: 2rem 1rem;
+                margin: 1rem auto;
+            }
+
+            .about h2, .services h2, .blog h2, .contact h2 {
+                font-size: 1.6rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .home-content {
+                padding: 1rem;
+            }
+            
+            .feature-item {
+                padding: 1.2rem;
+            }
+            
+            .feature-item i {
+                font-size: 2.5rem;
+            }
+            
+            .feature-item h3 {
+                font-size: 1.2rem;
+            }
+            
+            .feature-item p {
+                font-size: 0.9rem;
+            }
+
+            .professional-header {
+                padding: 1rem;
+                flex-direction: column;
+                align-items: flex-start;
+                text-align: left;
+            }
+            
+            .professional-header div {
+                width: 100%;
+                margin-bottom: 0.5rem;
+            }
+            
+            .professional-header i {
+                align-self: flex-end;
+                margin-top: -1.5rem;
+            }
+
+            .professional-header h3 {
+                font-size: 1.3rem;
+                line-height: 1.3;
+                margin-bottom: 0.3rem;
+            }
+            
+            .professional-header p {
+                font-size: 0.95rem;
+                margin: 0;
+            }
+
+            .professional-section h4 {
+                font-size: 1rem;
+                margin-bottom: 0.8rem;
+            }
+            
+            .professional-content.active {
+                padding: 1rem;
+            }
+
+            .personal-data {
+                grid-template-columns: 1fr;
+                gap: 0.8rem;
+            }
+            
+            .data-item {
+                font-size: 0.9rem;
+            }
+            
+            .data-item i {
+                font-size: 1rem;
+            }
+
+            .service-content, .blog-content {
+                padding: 1.2rem;
+            }
+            
+            .service-content h3, .blog-content h3 {
+                font-size: 1.2rem;
+                margin-bottom: 0.8rem;
+            }
+            
+            .service-content p, .blog-content p {
+                font-size: 0.9rem;
+                line-height: 1.5;
+            }
+
+            .contact-header {
+                padding: 1rem;
+            }
+            
+            .contact-header h3 {
+                font-size: 1.3rem;
+            }
+            
+            .contact-content {
+                padding: 1rem;
+            }
+
+            .contact-item {
+                flex-direction: row;
+                align-items: flex-start;
+                margin-bottom: 1.2rem;
+            }
+
+            .contact-item i {
+                margin-right: 0.8rem;
+                margin-bottom: 0;
+                font-size: 1.3rem;
+                min-width: 25px;
+            }
+            
+            .contact-item-content h4 {
+                font-size: 1rem;
+                margin-bottom: 0.3rem;
+            }
+            
+            .contact-item-content p {
+                font-size: 0.9rem;
+                line-height: 1.4;
+            }
+            
+            .schedule-list li {
+                font-size: 0.85rem;
+                line-height: 1.4;
+                padding: 0.2rem 0;
+            }
+            
+            .notes-section {
+                padding: 1rem;
+            }
+            
+            .notes-section h4 {
+                font-size: 1rem;
+                margin-bottom: 0.8rem;
+            }
+            
+            .notes-section p {
+                font-size: 0.85rem;
+                line-height: 1.4;
+            }
+        }
+        
+        @media screen and (max-width: 360px) {
+            .banner-text h2 {
+                font-size: 1.3rem;
+            }
+            .logo-image {
+                height: 35px;
+            }
+            .logo h1 {
+                font-size: 1rem;
+            }
+            .logo span {
+                font-size: 0.75rem;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Floating decorative elements -->
+    <div class="floating-elements">
+        <div class="floating-circle" style="top: 10%; left: 10%; animation-delay: 0s;"></div>
+        <div class="floating-circle" style="top: 20%; right: 15%; animation-delay: 1s;"></div>
+        <div class="floating-circle" style="bottom: 30%; left: 20%; animation-delay: 2s;"></div>
+        <div class="floating-triangle" style="top: 60%; right: 10%; animation-delay: 0.5s;"></div>
+        <div class="floating-triangle" style="bottom: 20%; right: 25%; animation-delay: 1.5s;"></div>
+        <div class="floating-square" style="top: 40%; left: 5%; animation-delay: 3s;"></div>
+        <div class="floating-square" style="bottom: 50%; right: 5%; animation-delay: 2.5s;"></div>
+    </div>
+    <!-- Header Section -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <img src="logopielysalud.png" alt="Piel y Salud Integral Logo" class="logo-image">
+                <div class="logo-text">
+                    <h1>Piel y <span>Salud Integral</span></h1>
+                </div>
+            </div>
+            
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#" data-section="home">Inicio</a></li>
+                    <li><a href="#" data-section="services">Servicios</a></li>
+                    <li><a href="#" data-section="about">Quiénes Somos</a></li>
+                    <li><a href="#" data-section="blog">Blog</a></li>
+                    <li><a href="#" data-section="contact">Contacto</a></li>
+                    <li class="cta-mobile-nav"><a href="#" data-section="contact">Pedir Cita</a></li>
+                </ul>
+            </nav>
+            
+            <button class="cta-button" data-section="contact">Pedir Cita</button>
+            
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Home Section -->
+    <section id="home" class="page-section active">
+        <div class="banner-container">
+            <img src="consultoriodermatologico.webp" alt="Banner del consultorio Piel y Salud Integral" class="banner-image">
+            <div class="banner-overlay"></div>
+            <div class="banner-text">
+                <h2>Recupera la confianza en tu piel. Tu salud es nuestra prioridad.</h2>
+                <p>Expertos en dermatología y medicina general para un tratamiento efectivo y personalizado.</p>
+            </div>
+        </div>
+        <div class="home-content">
+            <button class="cta-button-mobile" data-section="contact">Pedir Cita Ahora</button>
+            <div class="home-features">
+                <div class="feature-item">
+                    <i class="fas fa-user-md"></i>
+                    <h3>Enfoque Humano</h3>
+                    <p>Nuestro equipo de médicos especialistas utiliza la tecnología más avanzada y un enfoque humano para ofrecerte soluciones integrales.</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-check-circle"></i>
+                    <h3>Resultados Comprobados</h3>
+                    <p>Desde una consulta de rutina hasta un diagnóstico complejo, estamos aquí para cuidarte. Miles de pacientes han transformado su salud con nosotros.</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h3>Agenda tu Cita</h3>
+                    <p>No esperes más para sentirte y verte bien. ¡Agenda tu cita hoy mismo y da el primer paso hacia una vida más saludable!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="page-section services">
+        <h2>Nuestros Servicios</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-stethoscope"></i></div>
+                <div class="service-content">
+                    <h3>Consulta Dermatológica</h3>
+                    <p>Evaluación especializada de enfermedades de la piel, cabello y uñas con diagnóstico y tratamiento personalizado.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-microscope"></i></div>
+                <div class="service-content">
+                    <h3>Patología Diagnóstica</h3>
+                    <p>Estudios histopatológicos para diagnóstico preciso de enfermedades mediante análisis de muestras de tejido.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-prescription"></i></div>
+                <div class="service-content">
+                    <h3>Medicina Integral</h3>
+                    <p>Atención médica general con enfoque preventivo y de seguimiento para el bienestar completo del paciente.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="page-section about">
+        <h2>Quiénes Somos</h2>
+        <div class="professional-card">
+            <div class="professional-header" onclick="toggleProfessional(this)">
+                <div>
+                    <h3>Dra. Cristina Mía Díaz Jave</h3>
+                    <p>Médico cirujano Especialidad Dermatóloga</p>
+                </div>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="professional-content">
+                <div class="professional-section">
+                    <h4>Datos Personales</h4>
+                    <p>Profesión: Médico Dermatóloga</p>
+                </div>
+                <div class="professional-section">
+                    <h4>Formación Académica</h4>
+                    <ul class="professional-list">
+                        <li>Grado en Medicina: Universidad Nacional Mayor de San Marcos (UNMSM), Perú.</li>
+                        <li>Residencia en Dermatología: Admisión al Programa de Residentado Médico 2012, especialidad en Dermatología, Hospital Nacional Daniel Alcides Carrión (MINSA), Perú.</li>
+                    </ul>
+                </div>
+                <div class="professional-section">
+                    <h4>Experiencia Profesional</h4>
+                    <ul class="professional-list">
+                        <li>Dermatóloga certificada: Incluida en el directorio consolidado de dermatólogos en Perú (posición 215 en lista nacional), lo que confirma su práctica activa en el campo.</li>
+                    </ul>
+                </div>
+                <div class="professional-section">
+                    <h4>Publicaciones y Contribuciones Académicas</h4>
+                    <ul class="professional-list">
+                        <li><strong>Reporte de caso: "Enfermedad de Kyrle: reporte de un case"</strong>: Publicado en la Revista Oficial de la Sociedad Peruana de Dermatología, Vol. 24, No. 3 (2014). Autora principal o correspondiente, con fecha de recepción: 6 de junio de 2014; aceptación: 18 de junio de 2014. Incluye antecedentes clínicos de pacientes y tratamiento dermatológico.</li>
+                    </ul>
+                </div>
+                <div class="professional-section">
+                    <h4>Habilidades e Intereses Profesionales</h4>
+                    <ul class="professional-list">
+                        <li>Especialización en dermatología, con enfoque en enfermedades perforantes y casos raros de la piel (basado en publicaciones).</li>
+                        <li>Participación en sociedades médicas peruanas, como la Sociedad Peruana de Dermatología.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="professional-card">
+            <div class="professional-header" onclick="toggleProfessional(this)">
+                <div>
+                    <h3>Dr. Josehp Christopher Castillo Cuenca</h3>
+                    <p>Médico cirujano Especialidad Anatomopatologo</p>
+                </div>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="professional-content">
+                <div class="professional-section">
+                    <h4>Datos de Contacto</h4>
+                    <div class="personal-data">
+                        <div class="data-item">
+                            <i class="fas fa-phone"></i>
+                            <span>Teléfono: 986396733</span>
+                        </div>
+                        <div class="data-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>Email: grupopatologia2012@gmail.com</span>
+                        </div>
+                        <div class="data-item">
+                            <i class="fas fa-stethoscope"></i>
+                            <span>Colegio Médico del Perú Nº: 56435</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="professional-section">
+                    <h4>Perfil Profesional</h4>
+                    <p>Médico cirujano especializado en Anatomía Patológica, con experiencia en diagnóstico histopatológico, patología molecular, investigación clínica y docencia universitaria. Orientado a la excelencia diagnóstica, actualización continua y trabajo multidisciplinario. Destaca por su capacidad analítica, liderazgo ando y compromiso con la formación médica.</p>
+                </div>
+                <div class="professional-section">
+                    <h4>Educación</h4>
+                    <ul class="professional-list">
+                        <li><strong>Secundaria:</strong> Técnico en Computación e Informática - Colegio Nacional Politécnico de Varones del Callao, Dulanto-Callao, 1998</li>
+                        <li><strong>Educación Superior:</strong> Médico Cirujano - Universidad Nacional Mayor de San Marcos (UNMSM), Lima, Perú – 2010</li>
+                        <li><strong>Especialización:</strong> Residentado Médico en Anatomía Patológica - UNMSM – 2012 a 2015 (Hospital Nacional Daniel Alcides Carrión)
+                            <ul class="professional-list">
+                                <li>Rotación en Patología Neonatal (Hospital Nacional Docente Madre Niño San Bartolomé, Nov 2013)</li>
+                                <li>Rotación en Patología Oncológica (INEN, Junio - Julio 2015)</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="professional-section">
+                    <h4>Experiencia Laboral</h4>
+                    <ul class="professional-list">
+                        <li><strong>Hospital Nacional Daniel Alcides Carrión – Callao</strong> - Médico Asistente del Servicio de Anatomía Patológica (Dic 2016 – Presente). Tutor de médicos residentes, responsable de diagnósticos integrales en biopsias, citologías, necrópsias y estudios intraoperatorios.</li>
+                        <li><strong>Universidad Nacional Mayor de San Marcos</strong> - Docente Auxiliar en Anatomía Patológica (Ene 2016 – Presente). Tutor de residentes en interpretación de láminas histopatológicas, macroscopía e inmunohistoquímica.</li>
+                        <li><strong>Instituto de Anatomía Patológica y Patología Molecular Arias Stella</strong> - Anatomo patólogo área Microscopia (Jul 2015 – Presente, Tiempo completo). Encargado área Macroscopía (Jun 2014 – Jun 2015).</li>
+                        <li><strong>Hospital Nacional Daniel Alcides Carrión – Callao</strong> - Médico Residente en Anatomía Patológica (Jul 2012 – Jun 2015). Jefe de residentes (2013-2015).</li>
+                        <li><strong>Centro de Salud Santa Clara, Sihuas – Huaraz</strong> - Médico SERUMS (May 2010 – Abr 2011). Atención en medicina general, promoción preventiva, jefe de puesto y encargado de zoonosis.</li>
+                    </ul>
+                </div>
+                <div class="professional-section">
+                    <h4>Cursos y Actualizaciones Destacadas</h4>
+                    <ul class="professional-list">
+                        <li>Curso Internacional de Actualización en Patología Genitourinaria (2014)</li>
+                        <li>I Convención Nacional de Anatomía Patológica – ESSALUD (2014)</li>
+                        <li>V Jornada Peruana de Patología Oncológica, Trujillo (2018), Segundo premio caso clínico</li>
+                        <li>Curso Internacional de Patología Gastrointestinal (2018)</li>
+                        <li>Pathologist Training Workshop, Laboratorios Roche Argentina (2019)</li>
+                        <li>IX Congreso Internacional de Patología Uro-Oncológica (2019)</li>
+                        <li>XXXII Congreso Latinoamericano de Patología – SLAP (2019)</li>
+                    </ul>
+                </div>
+                <div class="professional-section">
+                    <h4>Producción Académica</h4>
+                    <ul class="professional-list">
+                        <li>Coautor artículo: "Percepción de estudiantes de medicina sobre la virtualización de la educación médica durante la pandemia de COVID-19", Revista Acta Médica Peruana.</li>
+                        <li>Ponente en casos clínico andos destacados: "Nevo de Spitz Atípico" y "Histoplasmosis diseminada aguda en paciente VIH/SIDA".</li>
+                    </ul>
+                </div>
+                <div class="professional-section">
+                    <h4>Habilidades</h4>
+                    <ul class="professional-list">
+                        <li>Diagnóstico morfológico e inmunohistoquímico integral.</li>
+                        <li>Análisis molecular de tejidos y células.</li>
+                        <li>Experiencia en necropsias, biopsias intraoperatorias y estudios citológicos.</li>
+                        <li>Capacitación docencia y tutoría en anatomía patológica pregrado y postgrado.</li>
+                        <li>Manejo avanzado de plataformas académicas virtuales y presenciales.</li>
+                        <li>Liderazgo y trabajo multidisciplinario.</li>
+                    </ul>
+                </div>
+                <div class="professional-section">
+                    <h4>Datos Personales y Características</h4>
+                    <p>Responsable, dinámico, asertivo, con alta capacidad analítica, rapidez de aprendizaje, solidario y colaborativo en equipos de trabajo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="page-section blog">
+        <h2>Blog de Salud</h2>
+        <div class="blog-grid">
+            <div class="blog-card">
+                <img class="blog-image" src="https://placehold.co/600x400/e8f5f0/2c3e50?text=Cuidado+de+Verano" alt="Cuidados de la piel en verano">
+                <div class="blog-content">
+                    <h3>Cuidados de la piel en verano</h3>
+                    <p>Consejos esenciales para proteger tu piel de los rayos UV y mantenerla saludable durante los meses de verano.</p>
+                    <a href="#" class="read-more">Leer más <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="blog-card">
+                <img class="blog-image" src="https://placehold.co/600x400/fdeef2/2c3e50?text=Dermatitis" alt="Dermatitis atópica: Guía completa">
+                <div class="blog-content">
+                    <h3>Dermatitis atópica: Guía completa</h3>
+                    <p>Todo lo que necesitas saber sobre esta condición de la piel: causas, síntomas y tratamientos efectivos.</p>
+                    <a href="#" class="read-more">Leer más <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="blog-card">
+                <img class="blog-image" src="https://placehold.co/600x400/e8f4f8/2c3e50?text=Diagnóstico" alt="Importancia del diagnóstico patológico">
+                <div class="blog-content">
+                    <h3>Importancia del diagnóstico patológico</h3>
+                    <p>Cómo los estudios histopatológicos son cruciales para el diagnóstico preciso de enfermedades complejas.</p>
+                    <a href="#" class="read-more">Leer más <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="page-section contact">
+        <h2>Contacto</h2>
+        <div class="contact-card">
+            <div class="contact-header"><h3>Información de Contacto</h3></div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div class="contact-item-content">
+                            <h4>Teléfono</h4>
+                            <p>986396733</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div class="contact-item-content">
+                            <h4>Horarios de Atención</h4>
+                            <ul class="schedule-list">
+                                <li><strong>Dermatología (Dra. Cristina Mía Díaz Jave):</strong> Lunes, miércoles y viernes, 10:00 a.m. - 2:00 p.m. and 3:00 p.m. - 7:00 p.m.</li>
+                                <li><strong>Medicina General (Dr. Josehp Castillo Cuenca):</strong> Lunes, Martes, jueves and viernes de 2:00 p.m. - 6:00 p.m.</li>
+                            </ul>
+                            <p>Citas fuera de horario disponibles previa coordinación.</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div class="contact-item-content">
+                            <h4>Dirección</h4>
+                            <p>Manzana M2 Lote 13 Jardines de Chillón, Puente Piedra</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="notes-section">
+                    <h4>Notas Adicionales</h4>
+                    <p><strong>Políticas de citas:</strong> Las citas deben confirmarse con 24 horas de antelación. Cancelaciones sin costo hasta 12 horas antes.</p>
+                </div>
+                <div class="map-container">
+                    <iframe src="https://maps.google.com/maps?q=-11.932876,-77.084618&hl=es&z=14&amp;output=embed" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+            const body = document.body;
+            const navLinks = document.querySelectorAll('.nav-menu a, .cta-button, .cta-button-mobile');
+
+            // --- Mobile Menu Toggle ---
+            hamburger.addEventListener('click', (e) => {
+                e.stopPropagation();
+                toggleMenu();
+            });
+
+            function toggleMenu() {
+                const isActive = navMenu.classList.toggle('active');
+                hamburger.innerHTML = isActive ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+                body.style.overflow = isActive ? 'hidden' : '';
+            }
+
+            // --- Section Navigation ---
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    const targetSectionId = link.getAttribute('data-section');
+                    if (targetSectionId) {
+                        e.preventDefault();
+                        
+                        document.querySelectorAll('.page-section').forEach(section => {
+                            section.classList.remove('active');
+                        });
+                        
+                        document.getElementById(targetSectionId).classList.add('active');
+                        
+                        if (navMenu.classList.contains('active')) {
+                            toggleMenu();
+                        }
+                        
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }
+                });
+            });
+
+            // --- Close menu helpers ---
+            document.addEventListener('click', (e) => {
+                if (!hamburger.contains(e.target) && !navMenu.contains(e.target) && navMenu.classList.contains('active')) {
+                    toggleMenu();
+                }
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+                    toggleMenu();
+                }
+            });
+            
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 860 && navMenu.classList.contains('active')) {
+                    toggleMenu();
+                }
+            });
+
+            // --- Professional Cards Accordion ---
+            const professionalHeaders = document.querySelectorAll('.professional-header');
+            professionalHeaders.forEach(header => {
+                header.setAttribute('tabindex', '0');
+                header.setAttribute('role', 'button');
+                header.setAttribute('aria-expanded', 'false');
+
+                header.addEventListener('click', () => toggleProfessional(header));
+                header.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        toggleProfessional(header);
+                    }
+                });
+            });
+
+            function toggleProfessional(element) {
+                const content = element.nextElementSibling;
+                const icon = element.querySelector('i');
+                const isActive = content.classList.toggle('active');
+                
+                icon.classList.toggle('fa-chevron-down', !isActive);
+                icon.classList.toggle('fa-chevron-up', isActive);
+                element.setAttribute('aria-expanded', isActive);
+            }
+
+            // --- Initial Setup ---
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById('home').classList.add('active');
+        });
+    </script>
+</body>
+</html>
